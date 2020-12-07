@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
         #deal with regular login AND OAuth
 
         if params[:user] #regular
-            raise params.inspect
             @user = User.find_by(name: params[:user][:email])
             authenticated = @user.try(:authenticate, params[:user][:password])
             redirect_to new_session_path unless authenticated
@@ -27,9 +26,9 @@ class SessionsController < ApplicationController
             @user.email = auth['info']['email']
             @user.image = auth['info']['image']
             @user.save
-            session[:user_id] = @user.id
         end
 
+        #applies to both:
         session[:user_id] = @user.id
         redirect_to user_path(@user)
 
