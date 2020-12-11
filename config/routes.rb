@@ -8,5 +8,20 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
+    scope module: 'admin' do 
+      #i'm trying to link to module admin without having the ../admin/.. in my url
+      #this is not the same as scope '/admin', module: 'admin' do.
+      resources :categories, only: [:show]
+      resources :products, only: [:show]
+    end
+
+
+  namespace :admin do
+    resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :products, only: [:new, :create, :index, :edit, :update, :destroy]
+  end
+
+
+
 
 end
