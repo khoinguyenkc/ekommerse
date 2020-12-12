@@ -1,12 +1,16 @@
 class Admin::CartItemsController < ApplicationController
     def create
         #when user add to cart a product, a form is submitted here
+        raise params.inspect
+
+
+
         @cartitem = CartItem.create(cart_item_params)
         #its OUR job, not user, to ensure this works. 
         amount = @cartitem.price * @cartitem.quantity
         @cartitem.amount = amount
         @cartitem.save
-        
+
 
 
     end

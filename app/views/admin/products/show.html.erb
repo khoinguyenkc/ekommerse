@@ -1,2 +1,13 @@
 admin module - products - show file
 we want to not have admin in the url for this file
+<div>
+<h2><%= @product.name %></h2>
+</div>
+<%= form_for CartItem.new,   :url => url_for(controller: 'admin/cart_items',
+    action: 'create',
+    method: 'post') do | f | %>
+<%= f.label :quantity  %>
+add hidden fields to fill out the cart_item
+<%= f.number_field :quantity  %>
+<%= f.submit "Add to Cart" %>
+<% end %>
