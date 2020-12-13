@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_045747) do
+ActiveRecord::Schema.define(version: 2020_12_13_031608) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "recipient_name"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2020_12_11_045747) do
     t.integer "zipcode"
     t.string "country"
     t.integer "user_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -36,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_045747) do
     t.decimal "coupon", default: "0.0", null: false
     t.decimal "shipping"
     t.decimal "taxes"
-    t.integer "order_id"
     t.decimal "subtotal"
+    t.integer "order_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -76,6 +80,10 @@ ActiveRecord::Schema.define(version: 2020_12_11_045747) do
     t.text "content"
     t.integer "product_id"
     t.integer "user_id"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "users", force: :cascade do |t|

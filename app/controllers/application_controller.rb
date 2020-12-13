@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :is_logged_in, :current_user
+    #this makes it available to not just contorllers, but views too
 
     def is_logged_in
         #since these are also marked as helper methods, they are availalble in not just all ctronollers (cuz they inherit from appc ontroler) but also avialble to views

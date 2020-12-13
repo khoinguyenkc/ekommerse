@@ -7,7 +7,10 @@ we want to not have admin in the url for this file
     action: 'create',
     method: 'post') do | f | %>
 <%= f.label :quantity  %>
-add hidden fields to fill out the cart_item
 <%= f.number_field :quantity  %>
+<%= f.hidden_field :price, value: @product.current_price  %>
+<%= f.hidden_field :product_id, value: @product.id  %>
+<%= f.hidden_field :cart_id, value: 4  %>
+
 <%= f.submit "Add to Cart" %>
 <% end %>
