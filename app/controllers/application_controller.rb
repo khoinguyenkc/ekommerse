@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :is_logged_in, :current_user, :cart, :current_or_dummy_user
+    helper_method :is_logged_in, :current_user, :current_cart, :current_or_dummy_user
     #this makes it available to not just contorllers, but views too
 
     def is_logged_in
@@ -12,12 +12,13 @@ class ApplicationController < ActionController::Base
         @user = User.find_by(id: session[:user_id])
     end
 
-    def cart
+    def current_cart
         if !session[:cart_id] 
             newcart = Cart.create
             session[:cart_id] = newcart.id
+            newcart #implicit return
         else
-            session[:cart_id]
+            Cart.find_by(id: session[:cart_id])
         end
     end
 

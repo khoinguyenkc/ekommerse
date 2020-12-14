@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       #this is not the same as scope '/admin', module: 'admin' do.
       resources :categories, only: [:show]
       resources :products, only: [:show]
+      resource :cart, only: [:show]
+
     end
 
 
