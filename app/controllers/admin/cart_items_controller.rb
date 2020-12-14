@@ -7,8 +7,7 @@ class Admin::CartItemsController < ApplicationController
 
         @cartitem = CartItem.create(cart_item_params)
         #its OUR job, not user, to ensure this works. 
-        amount = @cartitem.price * @cartitem.quantity
-        @cartitem.amount = amount
+        @cartitem.compute_amount
         @cartitem.save
         # flash.now[:notice] = 'Added to Cart'
         # redirect_to(request.env['HTTP_REFERER']) #this doesn't play well with notice:.... for some reason
