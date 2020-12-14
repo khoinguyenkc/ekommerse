@@ -1,0 +1,13 @@
+
+<h1> Cart </h1>
+<div>
+We havent figured out the quantity stuff and then the price stuff. Need to handle edge case if the user go back to product page and buy again, which create another cart item
+PRobably need a method in the Cart model.
+<ul>
+<% current_cart.products.each do  | product | %>
+   <li> 
+   <%= link_to product.name, product_path(product) %>. 
+   </li>
+    <% end %>
+    </ul>
+    <div>
