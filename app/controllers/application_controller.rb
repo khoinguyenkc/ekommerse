@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :is_logged_in, :current_user
+    helper_method :is_logged_in, :current_user, :cart, :current_or_dummy_user
     #this makes it available to not just contorllers, but views too
 
     def is_logged_in
@@ -11,5 +11,25 @@ class ApplicationController < ActionController::Base
     def current_user
         @user = User.find_by(id: session[:user_id])
     end
+
+    def cart
+        if !session[:cart_id] 
+            newcart = Cart.create
+            session[:cart_id] = newcart.id
+        else
+            session[:cart_id]
+        end
+    end
+
+    def current_or_dummy_user
+        if is_logged_in
+            current_user
+        else
+            User.new(email: "dummy@dummy.com", password: SecureRandom.hex )
+        end
+    end
+
+
+
 
 end
