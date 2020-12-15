@@ -4,9 +4,15 @@
 We havent figured out the quantity stuff and then the price stuff. Need to handle edge case if the user go back to product page and buy again, which create another cart item
 PRobably need a method in the Cart model.
 <ul>
-<% current_cart.products.each do  | product | %>
+<% current_cart.unique_products.each do  | product | %>
    <li> 
-   <%= link_to product.name, product_path(product) %>. 
+   <%= link_to product.name, product_path(product) %>
+   Price: <%= product.current_price %>
+   Quantity: <%= current_cart.unique_product_tally(product.id) %>
+   Amount:<%= current_cart.unique_product_amount(product.id) %>
+   <%= %>
+
+   Put price, quantity, and amount here.
    </li>
     <% end %>
     </ul>
