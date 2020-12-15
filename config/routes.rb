@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "welcome#home"
   get '/auth/facebook/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/checkout' => 'admin/orders#new'
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
       resources :categories, only: [:show]
       resources :products, only: [:show]
       resource :cart, only: [:show]
+      resources :orders, only: [:create] 
+
 
     end
 

@@ -37,6 +37,14 @@ class Cart < ApplicationRecord
         amount #return
     end
 
+    def compute_current_subtotal
+        #we expect this used multiple times. when we 
+        sum = 0
+        self.cart_items.each do | cart_item |
+            sum += cart_item.amount
+        end
+        self.subtotal = sum
+    end
 
 
 end

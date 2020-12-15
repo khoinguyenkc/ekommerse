@@ -1,0 +1,31 @@
+<% if !is_logged_in %>
+Returning customers should  <a href="">sign in</a>
+<% end %>
+
+<%= form_for @order do |f| %>
+
+
+<%= f.fields_for :address,  @address do | addr | %>
+    <%= addr.label :recipient_name %>
+    <%= addr.text_field :recipient_name %><br>
+    
+    <%= addr.label :street %>
+    <%= addr.text_field :street %><br>
+ 
+    <%= addr.label :city %>
+    <%= addr.text_field :city %><br>
+ 
+    <%= addr.label :state %>
+    <%= addr.text_field :state %><br>
+
+    <%= addr.label :country %>
+    <%= addr.text_field :country %><br>
+
+    <%= addr.label :zipcode %>
+    <%= addr.text_field :zipcode %><br>
+ 
+
+<% end %>
+<%= f.submit %>
+
+<% end %>

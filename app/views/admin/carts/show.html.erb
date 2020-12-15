@@ -12,8 +12,9 @@ PRobably need a method in the Cart model.
    Amount:<%= current_cart.unique_product_amount(product.id) %>
    <%= %>
 
-   Put price, quantity, and amount here.
    </li>
     <% end %>
     </ul>
+    Subtotal: <%= current_cart.compute_current_subtotal %>
+    <a href="">Go to Checkout</a>
     <div>

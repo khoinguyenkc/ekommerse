@@ -21,3 +21,4 @@ newcart = Cart.create
 item1 = CartItem.create(product: bowl, quantity: 2, cart: newcart)
 item2 = CartItem.create(product: thermapen, quantity: 3, cart: newcart)
 item3 = CartItem.create(product: bowl, quantity: 4, cart: newcart)
+Address.create(recipient_name: "Blue Ivy Carter", street: "492 park ave", city: "springfield", state: "VA", zipcode: 42323, country: "US")
