@@ -5,6 +5,10 @@ Returning customers should  <a href="">sign in</a>
 <%= form_for @order do |f| %>
 
 
+
+
+
+    <h2> Shipping Address </h2>
 <%= f.fields_for :address,  @address do | addr | %>
     <%= addr.label :recipient_name %>
     <%= addr.text_field :recipient_name %><br>
@@ -26,6 +30,6 @@ Returning customers should  <a href="">sign in</a>
  
 
 <% end %>
-<%= f.submit %>
+<%= f.submit "Continue to Shipping" %>
 
 <% end %>

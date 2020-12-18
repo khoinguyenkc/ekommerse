@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :is_logged_in, :current_user, :current_cart, :current_or_dummy_user
+    helper_method :is_logged_in, :current_user, :current_cart, :current_or_dummy_user, :free_shipping_threshold
     #this makes it available to not just contorllers, but views too
 
     def is_logged_in
@@ -29,6 +29,21 @@ class ApplicationController < ActionController::Base
             User.new(email: "dummy@dummy.com", password: SecureRandom.hex )
         end
     end
+
+    def free_shipping_threshold
+        50.00    
+    end
+
+
+
+
+
+
+
+
+
+
+
 
 
 

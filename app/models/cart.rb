@@ -44,7 +44,31 @@ class Cart < ApplicationRecord
             sum += cart_item.amount
         end
         self.subtotal = sum
+        self.save #otherwise this wont save
+        self.subtotal
     end
+
+    def compute_taxes(zipcode)
+        #an arbitrary formula, implicit return
+        self.taxes = zipcode < 50000 ? 4.52 : 5.12
+    end
+
+    def compute_shipping_options
+        #3 options: fast shipping, slow shipping, free shipping(if qualifies)
+        #ideally we implement a variable where we store our freeshippingthreshold
+        #heres a fake algorithm
+        hash = {
+            slow: subtotal > 50 ? 0.00 : 4.65,
+            fast: 8.00
+        }
+    end
+
+
+
+
+
+        
+
 
 
 end
