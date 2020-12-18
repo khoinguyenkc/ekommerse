@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/checkout' => 'admin/orders#new'
+  get '/checkout/shipping' => 'admin/carts#shipping', as: "shipping"
+
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]

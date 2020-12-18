@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
         #this better work. user will not fix anything. 
         #unusual: no redirect. we go to next step: shipping options
 
-        render 'shipping'
+        redirect_to shipping_path
     end
 
 
