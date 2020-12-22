@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root "welcome#home"
   get '/auth/facebook/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/pleaselogin' => 'sessions#force_log_in', as: "force_log_in"
   
-  get '/clearcartid' => 'admin/carts#clear_cart_id'
+  get '/clearcartid' => 'admin/carts#clear_cart_id' #temporary thing 
 
   get '/checkout/address' => 'admin/orders#collect_address', as: "collect_address"
   patch '/checkout/address' => 'admin/orders#update_address_and_first_assos', as: "update_address"

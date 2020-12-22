@@ -2,13 +2,21 @@ THIS Page piggy backs from the new session Page as a template
 it just has extra lines like
 "Just one last step. Please kindly login or signup. It's super fast."
 
+
+
 <% if !is_logged_in %>
-<% else %>
-<a href="/auth/facebook"> Log in thru facebook </a>
+<a href="/auth/facebook"> Log in thru facebook </a><br>
+
+<% if notice %>
+<%= notice %>
+<% end %>
+
 Form to log in:
-<a href="<%= new_session_path %>"> Log in with your store account </a>
+<%= render 'newform' %>
 Form to sign up:
-<a href="<%= new_user_path %>"> Sign up with your store account </a>
+<%= render 'users/newform' %>
+
+
 <% end %>
 
 

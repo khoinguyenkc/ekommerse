@@ -60,12 +60,12 @@ class Admin::OrdersController < ApplicationController
         #do some finalizing stuff, 
 
 
-        #then remove the session{:order_id], 
+        #then remove the session{:order_id], clear cart, etc.... but dont enable them until everything else is workingư
         #session.delete :order_id
 
         #then
         if !is_logged_in
-            render "sessions/force_log_in"
+            redirect_to force_log_in_path
         else
             render "thanks_for_order"
         end

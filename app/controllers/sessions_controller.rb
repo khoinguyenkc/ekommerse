@@ -4,15 +4,29 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
+    def force_log_in
+        @user = User.new
+    end
 
 
     def create
         #deal with regular login AND OAuth
 
         if params[:user] #regular
-            @user = User.find_by(name: params[:user][:email])
+            # raise params.inspect
+
+            @user = User.find_by(email: params[:user][:email])
             authenticated = @user.try(:authenticate, params[:user][:password])
-            redirect_to new_session_path unless authenticated
+
+             if authenticated 
+                session[:user_id] = @user.id
+                redirect_to user_path(@user)
+             else        
+                # redirect_to new_session_path
+                redirect_back fallback_location: new_session_path, notice: "Could not verify login. Please try again"
+
+             end
+
         else #OAuth
 
             @user = User.find_by(uid: auth['uid']) 
@@ -26,11 +40,10 @@ class SessionsController < ApplicationController
             @user.email = auth['info']['email']
             @user.image = auth['info']['image']
             @user.save
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+    
         end
-
-        #applies to both:
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
 
 
     end
