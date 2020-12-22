@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :is_logged_in, :current_user, :current_cart, :current_or_dummy_user, :free_shipping_threshold
+    helper_method :is_logged_in, :current_user, :current_cart, :current_order, :current_email, :current_or_dummy_user, :free_shipping_threshold
     #this makes it available to not just contorllers, but views too
 
     def is_logged_in
@@ -20,6 +20,32 @@ class ApplicationController < ActionController::Base
         else
             Cart.find_by(id: session[:cart_id])
         end
+    end
+
+    def current_order 
+        if !session[:order_id] 
+            @order = Order.new
+
+            if is_logged_in && current_user.addresses.last #the last added address
+                @order.address = current_user.addresses.last
+                @order.save
+            else
+                @order.address = Address.new
+                @order.save
+            end
+
+        else
+            @order = Order.find_by(id: session[:order_id])
+        end
+
+            @order.cart = current_cart
+            @order #implicit return
+
+    end
+
+    def current_email
+        #this does not intialize anything. if user enter an email when they buy, then the email is saved. we'll later use this to help them signup/login
+        session[:current_email] 
     end
 
     def current_or_dummy_user

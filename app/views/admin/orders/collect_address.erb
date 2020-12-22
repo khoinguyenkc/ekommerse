@@ -1,8 +1,14 @@
+
+<h3>FIRST STEP OF CHECKOUT: collect email and address </h3>
+
+
+
 <% if !is_logged_in %>
-Returning customers should  <a href="">sign in</a>
+Returning customer?   <a href="">Sign in </a>for faster checkout.
 <% end %>
 
-<%= form_for @order do |f| %>
+this used to use @order but now it uses the current_order helper
+<%= form_for current_order, :url => url_for(path: update_address_path, method: :post)   do |f| %>
 
 
 

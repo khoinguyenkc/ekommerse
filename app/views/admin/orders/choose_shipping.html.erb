@@ -1,0 +1,31 @@
+Shipping 
+
+<h3>SECOND STEP OF CHECKOUT: choose shipping </h3>
+
+Subtotal: <%= current_cart.subtotal %>
+<br>
+I need to turn this into a form to submit. it will edit the cart ....
+<div>
+Shipping Options:
+<%= form_tag update_shipping_path do %>
+<% if current_cart.subtotal > free_shipping_threshold %>
+<input type="radio" id="free" name="order[shippingoption]" value="free" required>
+<label for="standard">Free Shipping</label><br>
+<% else  %>
+<label>
+<input type="radio" id="standard" name="order[shippingoption]" value="slow">
+<label for="standard">Standard Shipping <%= current_cart.compute_shipping_options[:slow] %></label><br>
+<% end  %>
+<input type="radio" id="express" name="order[shippingoption]" value="fast">
+<label for="express">Express Shipping <%= current_cart.compute_shipping_options[:fast] %></label><br>
+Taxes:<br>
+<%= current_cart.taxes%><br>
+
+<%= submit_tag "Next step" %>
+<% end %>
+
+</div>
+
+
+
+

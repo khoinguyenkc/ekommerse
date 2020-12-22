@@ -58,10 +58,13 @@ class Cart < ApplicationRecord
         #ideally we implement a variable where we store our freeshippingthreshold
         #heres a fake algorithm
         hash = {
+            free: 0.00,
             slow: subtotal > 50 ? 0.00 : 4.65,
             fast: 8.00
         }
     end
+
+
 
 
 

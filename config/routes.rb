@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   root "welcome#home"
   get '/auth/facebook/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/checkout' => 'admin/orders#new'
-  get '/checkout/shipping' => 'admin/carts#shipping', as: "shipping"
+  
+  get '/clearcartid' => 'admin/carts#clear_cart_id'
+
+  get '/checkout/address' => 'admin/orders#collect_address', as: "collect_address"
+  patch '/checkout/address' => 'admin/orders#update_address_and_first_assos', as: "update_address"
+  get '/checkout/shipping' => 'admin/orders#choose_shipping', as: "shipping"
+  post '/checkout/shipping' => 'admin/orders#update_shipping', as: "update_shipping"
+  get '/checkout/payment' => 'admin/orders#payment', as: "payment"
+  post '/checkout/finalize_order' => 'admin/orders#finalize_order', as: "finalize_order"
 
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -16,13 +23,12 @@ Rails.application.routes.draw do
       #this is not the same as scope '/admin', module: 'admin' do.
       resources :categories, only: [:show]
       resources :products, only: [:show]
-      resource :cart, only: [:show]
-      resources :orders, only: [:create] 
-
-
+      resource :cart, only: [:show, :update]
+      resources :orders, only: [:show] 
     end
 
 
+      #this is NOT a mistake/duplicate. dont delete.
   namespace :admin do
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :products, only: [:new, :create, :index, :edit, :update, :destroy]

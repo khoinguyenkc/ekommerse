@@ -1,0 +1,24 @@
+
+<h3>THIRD STEP OF CHECKOUT: payment </h3>
+
+
+<div>
+<h1>PAYMENT</h1>
+ALL TRANSACTIONS ARE SECURE AND ENCRYPTED.
+
+
+
+<%= form_tag(finalize_order_path)  do %>
+
+<label>Card Number:</label><br>
+<input type="text" ><br>
+<label>Name on Card:</label><br>
+<input type="text" ><br>
+<label>Expiration Date (MMYY):</label><br>
+<input type="text" ><br>
+<label>Security Code:</label><br>
+<input type="text" ><br>
+<%= submit_tag "Pay Now" %>
+<% end %>
+
+</div>
