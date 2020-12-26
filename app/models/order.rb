@@ -7,8 +7,22 @@ class Order < ApplicationRecord
     def address_attributes=(address)
         #you'll be passed a hash
         self.address = Address.find_or_create_by(address) #the whole thing must match, otherwise create a new object
-        self.address.user_id = current_user.id if current_user
+        #we can't save user id using current_user or session becuase models dont get access to it. must be fed or something.
         self.save
     end
+
+    def compute_total_so_far(cart)
+        #will build this later...
+        sum = 0
+        sum += cart.coupon if cart.coupon
+        sum += cart.subtotal if cart.coupon
+        sum += cart.shipping if cart.shipping
+        sum += cart.taxes if cart.taxes
+        sum
+    end
+
+
+
+
 
 end

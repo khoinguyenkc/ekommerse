@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_031608) do
+ActiveRecord::Schema.define(version: 2020_12_25_002653) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "recipient_name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_12_13_031608) do
     t.decimal "total_amount"
     t.integer "address_id"
     t.boolean "paid", default: false, null: false
+    t.boolean "fulfilled", default: false, null: false
   end
 
   create_table "products", force: :cascade do |t|

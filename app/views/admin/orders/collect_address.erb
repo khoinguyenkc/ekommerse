@@ -2,6 +2,8 @@
 <h3>FIRST STEP OF CHECKOUT: collect email and address </h3>
 
 
+<%= render "bill_subtotal" %>
+<%= render "bill_total" %>
 
 <% if !is_logged_in %>
 Returning customer?   <a href="">Sign in </a>for faster checkout.
@@ -16,8 +18,13 @@ this used to use @order but now it uses the current_order helper
 
     <h2> Shipping Address </h2>
 <%= f.fields_for :address,  @address do | addr | %>
+
+    <%= addr.label :email %>
+    <%= addr.text_field :email, value: current_email  %><br>
+    <!-- were just using this to get the email. wont actually save the email to the address -->
+
     <%= addr.label :recipient_name %>
-    <%= addr.text_field :recipient_name %><br>
+    <%= addr.text_field :recipient_name  %><br>
     
     <%= addr.label :street %>
     <%= addr.text_field :street %><br>

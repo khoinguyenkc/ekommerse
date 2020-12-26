@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
             @order = Order.new
 
             if is_logged_in && current_user.addresses.last #the last added address
-                @order.address = current_user.addresses.last
+                @order.address = current_user.addresses.last #theres some bug. it's grabbing another user's address info ...
                 @order.save
             else
                 @order.address = Address.new
@@ -39,13 +39,15 @@ class ApplicationController < ActionController::Base
         end
 
             @order.cart = current_cart
+            @order.save
             @order #implicit return
 
     end
 
     def current_email
-        #this does not intialize anything. if user enter an email when they buy, then the email is saved. we'll later use this to help them signup/login
-        session[:current_email] 
+        #this TRY to initialize, not guranteed.. if user enter an email when they buy, then the email is saved. we'll later use this to help them signup/login
+            session[:current_email] = current_user.email if current_user.email
+            session[:current_email] 
     end
 
     def current_or_dummy_user
@@ -60,7 +62,13 @@ class ApplicationController < ActionController::Base
         50.00    
     end
 
+    def clear_cart
+        session.delete :cart_id if session[:cart_id] 
+    end
 
+    def clear_order
+        session.delete :order_id if session[:order_id]
+    end
 
 
 

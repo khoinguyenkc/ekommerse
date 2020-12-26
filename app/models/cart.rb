@@ -57,6 +57,8 @@ class Cart < ApplicationRecord
         #3 options: fast shipping, slow shipping, free shipping(if qualifies)
         #ideally we implement a variable where we store our freeshippingthreshold
         #heres a fake algorithm
+
+        #assumption: metod called after compute_current_subtotal
         hash = {
             free: 0.00,
             slow: subtotal > 50 ? 0.00 : 4.65,

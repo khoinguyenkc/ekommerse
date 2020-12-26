@@ -19,10 +19,15 @@ class Admin::OrdersController < ApplicationController
 
     def update_address_and_first_assos #used to be create method. we modified a bit.
         #comes from first checkout step
+
         #raise params.inspect
+
         @order = current_order
         @order.update(order_params) #give it the address. 
+        @order.address.user_id = current_user.id if current_user
         #if old address, it will not create new address. because we wrote a custom setter 
+
+        session[:current_email] = params[:order][:address_attributes][:email]
 
         current_cart.compute_current_subtotal
         current_cart.compute_taxes(@order.address.zipcode) 
@@ -57,11 +62,15 @@ class Admin::OrdersController < ApplicationController
     end
 
     def finalize_order
-        #do some finalizing stuff, 
+        # mark order as paid
+        @order = current_order
+        @order.paid = true
 
 
         #then remove the session{:order_id], clear cart, etc.... but dont enable them until everything else is workingư
-        #session.delete :order_id
+        #D-R-Y
+        #clear_cart
+        #clear_order
 
         #then
         if !is_logged_in

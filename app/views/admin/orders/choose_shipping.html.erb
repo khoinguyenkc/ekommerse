@@ -2,7 +2,10 @@ Shipping
 
 <h3>SECOND STEP OF CHECKOUT: choose shipping </h3>
 
-Subtotal: <%= current_cart.subtotal %>
+<%= render "bill_subtotal" %>
+<%= render "bill_taxes" %>
+<%= render "bill_total" %>
+
 <br>
 I need to turn this into a form to submit. it will edit the cart ....
 <div>

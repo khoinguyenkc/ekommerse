@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
              if authenticated 
                 session[:user_id] = @user.id
-                redirect_to user_path(@user)
+                redirect_to root_path
              else        
                 # redirect_to new_session_path
                 redirect_back fallback_location: new_session_path, notice: "Could not verify login. Please try again"
@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
             @user.image = auth['info']['image']
             @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to root_path
     
         end
 
