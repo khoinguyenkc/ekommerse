@@ -2,8 +2,6 @@
 this page says thanks for ordering
 then it piggy back on the SHOW Page for the order
 
-<%= render "bill_subtotal" %>
-<%= render "bill_taxes" %>
-<%= render "bill_shipping" %>
-<%= render "bill_total" %>
+<%= render "order_details" %>
+<%= link_to "See more details of your order", order_path(@order) %>
 

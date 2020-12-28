@@ -18,7 +18,10 @@ class Order < ApplicationRecord
         sum += cart.subtotal if cart.coupon
         sum += cart.shipping if cart.shipping
         sum += cart.taxes if cart.taxes
-        sum
+        #binding.pry
+        self.total_amount = sum
+        self.save
+        self.total_amount
     end
 
 

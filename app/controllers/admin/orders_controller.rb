@@ -30,7 +30,7 @@ class Admin::OrdersController < ApplicationController
         session[:current_email] = params[:order][:address_attributes][:email]
 
         current_cart.compute_current_subtotal
-        current_cart.compute_taxes(@order.address.zipcode) 
+        current_cart.compute_taxes(@order.address.zipcode, current_cart.subtotal) 
         @order.cart = current_cart #very important
         @order.save
         #this better work. user will not fix anything. 
@@ -65,24 +65,28 @@ class Admin::OrdersController < ApplicationController
         # mark order as paid
         @order = current_order
         @order.paid = true
-
+        @cart = @order.cart
 
         #then remove the session{:order_id], clear cart, etc.... but dont enable them until everything else is workingư
         #D-R-Y
-        #clear_cart
-        #clear_order
+        clear_cart
+        clear_order
 
         #then
         if !is_logged_in
             redirect_to force_log_in_path
-        else
+            #warning
+            #gotta somehow make it return here and execute the rest of this method's code
+        else 
             render "thanks_for_order"
+
         end
         
     end
 
     def show 
-
+        @order = Order.find_by(id: params[:id])
+        @cart = @order.cart
     end
 
 

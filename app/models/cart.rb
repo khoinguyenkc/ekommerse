@@ -8,6 +8,11 @@ class Cart < ApplicationRecord
         #this method is perfectly fine. its more user friendly!
     end
 
+    def price_when_bought(product)
+        cart_item = self.cart_items.find { |x| x.product_id == product.id }
+        #binding.pry
+        cart_item.price 
+    end
 
     def unique_product_tally(product_id)
         #we dont need this. but user wants to see it
@@ -48,9 +53,11 @@ class Cart < ApplicationRecord
         self.subtotal
     end
 
-    def compute_taxes(zipcode)
+    def compute_taxes(zipcode, subtotal)
         #an arbitrary formula, implicit return
-        self.taxes = zipcode < 50000 ? 4.52 : 5.12
+        self.taxes = zipcode < 50000 ? (subtotal * 0.05) : (subtotal * 0.0875) 
+        self.save
+        self.taxes
     end
 
     def compute_shipping_options

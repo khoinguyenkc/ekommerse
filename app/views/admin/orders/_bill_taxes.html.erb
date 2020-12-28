@@ -1,4 +1,5 @@
 
 
 Taxes:  
-<%= current_cart.compute_taxes(current_order.address.zipcode) %>
+<%= current_cart.compute_taxes(current_order.address.zipcode, current_cart.compute_current_subtotal) %>
+

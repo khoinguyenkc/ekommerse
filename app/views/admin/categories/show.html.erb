@@ -1,2 +1,10 @@
 admin module - categories - show file
 we want to not have admin in the url for this file
+
+
+<%= @category.name %>
+<div>
+<% @category.products.each do | product | %>
+<%= link_to product.name, product_path(product) %>
+<% end %>
+</div>

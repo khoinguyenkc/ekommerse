@@ -50,6 +50,10 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :user_id if session[:user_id]
+
+        clear_cart
+        clear_order
+
         redirect_to root_path
     end
 

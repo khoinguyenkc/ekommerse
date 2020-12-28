@@ -23,6 +23,12 @@
 <a href="<%= new_user_path %>"> Sign up with your store account </a>
 <% end %>
 
+<nav> 
+<% Category.all.each do | category | %>
+  <%= link_to category.name, category_path(category) %>
+  <% end %>
+</nav>
+
     <%= yield %>
   </body>
 </html>

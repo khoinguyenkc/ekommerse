@@ -1,6 +1,7 @@
 class Admin::CartsController < ApplicationController
     def show
         #dont need to pass. views will grab cart from current_card helper method
+        @cart = current_cart
     end
 
     #MOVED TO ORDERS CONTROLLER

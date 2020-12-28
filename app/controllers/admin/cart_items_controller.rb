@@ -9,6 +9,7 @@ class Admin::CartItemsController < ApplicationController
         #its OUR job, not user, to ensure this works. 
         @cartitem.compute_amount
         @cartitem.save
+        binding.pry
         # flash.now[:notice] = 'Added to Cart'
         # redirect_to(request.env['HTTP_REFERER']) #this doesn't play well with notice:.... for some reason
         redirect_back fallback_location: product_path(Product.find_by(id: @cartitem.product_id)) , notice: "Added to Cart"

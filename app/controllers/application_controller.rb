@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
     def current_email
         #this TRY to initialize, not guranteed.. if user enter an email when they buy, then the email is saved. we'll later use this to help them signup/login
-            session[:current_email] = current_user.email if current_user.email
+            session[:current_email] = current_user.email if current_user && current_user.email
             session[:current_email] 
     end
 

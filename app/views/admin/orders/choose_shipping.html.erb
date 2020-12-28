@@ -21,8 +21,6 @@ Shipping Options:
 <% end  %>
 <input type="radio" id="express" name="order[shippingoption]" value="fast">
 <label for="express">Express Shipping <%= current_cart.compute_shipping_options[:fast] %></label><br>
-Taxes:<br>
-<%= current_cart.taxes%><br>
 
 <%= submit_tag "Next step" %>
 <% end %>

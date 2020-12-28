@@ -1,5 +1,6 @@
-class Admin::ProductsController < ApplicationController
+class Admin::CategoriesController < ApplicationController
     def show
+        @category = Category.find_by(id: params[:id])
     end
 
     
