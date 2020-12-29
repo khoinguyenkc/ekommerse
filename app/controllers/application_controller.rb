@@ -70,6 +70,8 @@ class ApplicationController < ActionController::Base
         session.delete :order_id if session[:order_id]
     end
 
+    
+
 
 
 

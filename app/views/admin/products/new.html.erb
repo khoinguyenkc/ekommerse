@@ -1,0 +1,13 @@
+
+
+Add new product:
+
+<%= form_for @product do | f | %>
+    Product Name:<%= f.text_field :name %>
+    Description:<%= f.text_field :description %>
+    Image URL: <%= f.text_field :image %>
+    Current Price: <%= f.text_field :current_price %>
+    Category IDs: <%= f.text_field :category_ids, value: @category_id %> 
+    <%# will not cause errors if no @category %>
+    <%= f.submit %>
+    <% end %>
