@@ -1,10 +1,28 @@
 <%= form_for @user do | f | %>
+
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do | msg | %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field <%= 'field_with_errors' if @user.errors[:email].any? %>">
     Email:
     <%= f.text_field :email, value: current_email %><br>
+    </div>
+    <div class="field <%= 'field_with_errors' if @user.errors[:password].any? %>">
     Password:
     <%= f.password_field :password %><br>
+    </div>
+    <div class="field <%= 'field_with_errors' if @user.errors[:password_confirmation].any? %>">
     Confirm Password:
     <%= f.password_field :password_confirmation %><br>
-    
+    </div>
+
     <%= f.submit %>
     <% end %>

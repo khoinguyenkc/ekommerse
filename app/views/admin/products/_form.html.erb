@@ -1,0 +1,19 @@
+
+
+
+
+<%= form_for @product do | f | %>
+    Product Name:<%= f.text_field :name %>
+    Description:<%= f.text_field :description %>
+    Image URL: <%= f.text_field :image %>
+    Current Price: <%= f.text_field :current_price %>
+    
+    <% if @category_id %>
+     <%= f.hidden_field :category_ids, value: @category_id %> 
+    <% else %>
+    Category IDs: <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, prompt: true) %>
+    <% end %>
+
+    <%# will not cause errors if no @category %>
+    <%= f.submit %>
+    <% end %>
