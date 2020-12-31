@@ -2,6 +2,8 @@ admin module - products - show file
 we want to not have admin in the url for this file
 <div>
 <h2><%= @product.name %></h2>
+Price: $<%= @product.current_price %>
+
 </div>
 <%= form_for CartItem.new,   :url => url_for(controller: 'admin/cart_items',
     action: 'create',
@@ -15,4 +17,11 @@ we want to not have admin in the url for this file
 <% end %>
 <% if notice %>
 <%= notice %>
+<% end %>
+
+
+Reviews:
+<% @product.reviews.new_to_old.each do | review | %>
+    <%= review.user.name if review.user.name %>
+    <%= review.content %>
 <% end %>

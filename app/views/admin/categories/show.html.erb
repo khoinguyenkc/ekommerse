@@ -1,10 +1,15 @@
 admin module - categories - show file
 we want to not have admin in the url for this file
 
+#option to sort by....
+Sort by:
+<%= link_to "Low to High Price", {:controller => "admin/categories", :action => "show", :sort => "lowtohigh" }%>
+<%= link_to "High to Low Price", {:controller => "admin/categories", :action => "show", :sort => "hightolow" }%>
 
 <%= @category.name %>
 <div>
-<% @category.products.each do | product | %>
+<% @categoryproducts.each do | product | %>
 <%= link_to product.name, product_path(product) %>
+<%= product.current_price %>
 <% end %>
 </div>

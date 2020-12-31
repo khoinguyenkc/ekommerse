@@ -3,6 +3,7 @@ class Product < ApplicationRecord
     has_many :categories, through: :category_products
     has_many :cart_items
     has_many :carts, through: :cart_items
+    has_many :reviews
 
     scope :low_to_high, -> { order(current_price: :asc) }
     scope :high_to_low, -> { order(current_price: :desc) }
