@@ -13,5 +13,10 @@ class Admin::CategoriesController < ApplicationController
         end
     end
 
+    def index
+    
+    end
+
+
     
 end

@@ -35,7 +35,8 @@ Rails.application.routes.draw do
       #this is NOT a mistake/duplicate. dont delete.
   #namespace :admin do
   scope '/admin', module: 'admin' do #trying this new thing, lets see if it works
-    resources :categories, only: [:new, :create, :index, :edit, :update, :destroy] do
+
+    resources :categories, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :products, only: [:new, :index] #still in the productscontroller
     end
 

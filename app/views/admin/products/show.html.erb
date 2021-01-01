@@ -19,7 +19,7 @@ Price: $<%= @product.current_price %>
 <%= notice %>
 <% end %>
 
-
+<%= link_to "Write a Review", new_product_review_path(@product) %>
 Reviews:
 <% @product.reviews.new_to_old.each do | review | %>
     <%= review.user.name if review.user.name %>

@@ -11,7 +11,7 @@ class Admin::ReviewsController < ApplicationController
     end
 
     def create
-        raise params.inspect
+        # raise params.inspect
         #<ActionController::Parameters {
             # "authenticity_token"=>"5PR7r3BWVd8FEFwv9rCpbvlzJ2w664lHTXN3Ju7rPIR40lZmlF/jPCUbCrM+zxWIZeiCaCbNEk84FEy2Mt3prA==", 
             # "review"=>{
@@ -25,6 +25,15 @@ class Admin::ReviewsController < ApplicationController
             # "product_id"=>"7"}   
               
             #       permitted: false>
+            @review = Review.create(review_params)
+            if @review.save
+                redirect_to @review.product
+            else
+                @product = Product.find_by(id: params[:review][:product_id])
+                render :new
+    
+            end
+    
 
     end
 
@@ -37,6 +46,12 @@ class Admin::ReviewsController < ApplicationController
 
     def update
     end
+
+    private 
+    def review_params
+        params.require(:review).permit(:content, :user_id, :product_id)
+    end
+
 
 
 end
