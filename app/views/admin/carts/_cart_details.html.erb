@@ -1,15 +1,17 @@
 <ul>
 <% @cart.unique_products.each do  | product | %>
    <li> 
+
+   <%# display the unique products, quantity, price, amount %>
+
    <%= link_to product.name, product_path(product) %>
    Price: <%= @cart.price_when_bought(product) %>
    Quantity: <%= @cart.unique_product_tally(product.id) %>
    Amount:<%= @cart.unique_product_amount(product.id) %>
-
-   <%# make sure to later make it so that when viewing your order, you can't edit your cart items... %>
-   <%# its a mess because of being connected and stuff %>
+   
 
    <%# editing the cart_item, aka change quantity %>
+
    <%= form_for @cart.cart_items.find{ |item| item.product_id == product.id } ,   :url => url_for(controller: 'admin/cart_items',
     action: 'special_update',
     method: 'patch') do | f | %>
@@ -20,6 +22,7 @@
 <%= f.hidden_field :cart_id, value: session[:cart_id] %>
 <%= f.submit "Update" %>
 <% end %>
+
 
       <%# delete cart item %>
 

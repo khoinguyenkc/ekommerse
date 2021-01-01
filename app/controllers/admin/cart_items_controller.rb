@@ -25,7 +25,7 @@ class Admin::CartItemsController < ApplicationController
         #so we gotta edit this cart item, THEN DELETE ALL OTHER CART ITEMS OF THE SAME PRODUCT
         #ex: we have 2 cart items of same product, 2 + 3 = 5 quantities, 
         #if user edit it to 4, then we chagne first cart item to 4, then delete the second cart item.
-        raise params.inspect
+        # raise params.inspect
         # <ActionController::Parameters {
         #     "_method"=>"patch", 
         #     "authenticity_token"=>"fqgWaIybUlcA+eQoWJQx67wok0qsydTVD72vKrL6u8nijjuhaJLktCDysrSQ640NILM2TrDvT9162pS6bsxu4Q==",
@@ -35,12 +35,18 @@ class Admin::CartItemsController < ApplicationController
         #           "cart_id"=>"15"}, 
         #     "commit"=>"Update", "method"=>"patch", "controller"=>"admin/cart_items", "action"=>"special_update"} permitted: false>
 
-        @cart_item = @current_cart.cart_items.find{ |item| item.product_id == params[:cart_item][:product_id] }
+        @cart_item = current_cart.cart_items.where(product_id: params[:cart_item][:product_id]).first
         @cart_item.update(special_update_params)
         if @cart_item.save
             #delete other cart items
+            CartItem.where(product_id: params[:cart_item][:product_id]).each do | item |
+                item.delete if item.id != @cart_item.id
+                current_cart.save
+            end
+
             #redirect to cart and gives a notice notice: "Quantity updated."
-        else
+            redirect_back fallback_location: cart_path , notice: "Quantity updated"
+
         end
 
         # want special check. no changing of price. only quantitty!!!!!

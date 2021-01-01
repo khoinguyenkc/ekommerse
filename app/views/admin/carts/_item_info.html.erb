@@ -1,0 +1,4 @@
+<%= link_to product.name, product_path(product) %>
+Price: <%= @cart.price_when_bought(product) %>
+Quantity: <%= @cart.unique_product_tally(product.id) %>
+Amount:<%= @cart.unique_product_amount(product.id) %>
