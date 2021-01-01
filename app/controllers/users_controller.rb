@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     def new
+        #need to check forr login. login guards or whatever. using helpelrs.
+        #not enough to hide the links in the Views
         @user = User.new
 
     end

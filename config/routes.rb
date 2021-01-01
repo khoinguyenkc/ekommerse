@@ -23,7 +23,10 @@ Rails.application.routes.draw do
       #i'm trying to link to module admin without having the ../admin/.. in my url
       #this is not the same as scope '/admin', module: 'admin' do.
       resources :categories, only: [:show]
-      resources :products, only: [:show]
+      resources :products, only: [:show] do
+        resources :reviews, only: [:new, :create, :show, :edit, :update]
+      end
+
       resource :cart, only: [:show, :update]
       resources :orders, only: [:show] 
     end

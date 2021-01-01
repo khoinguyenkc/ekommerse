@@ -6,8 +6,7 @@ class User < ApplicationRecord
 
     validates :email, presence: true
     validates :email, uniqueness: true
-    validates :email, format: { with: /.{1,}@[^.]{1,}
-    / , message: "Your entered an invalid email" }
+    validates :email, format: { with: /.{1,}@[^.]{1,}/ , message: "Your entered an invalid email" }
 
     validates :password, length: { in: 6..20 }
 
