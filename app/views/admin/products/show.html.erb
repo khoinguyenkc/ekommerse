@@ -24,4 +24,5 @@ Reviews:
 <% @product.reviews.new_to_old.each do | review | %>
     <%= review.user.name if review.user.name %>
     <%= review.content %>
+    <%= link_to "Full Review", product_review_path(@product, review) %>
 <% end %>

@@ -11,20 +11,6 @@ class Admin::ReviewsController < ApplicationController
     end
 
     def create
-        # raise params.inspect
-        #<ActionController::Parameters {
-            # "authenticity_token"=>"5PR7r3BWVd8FEFwv9rCpbvlzJ2w664lHTXN3Ju7rPIR40lZmlF/jPCUbCrM+zxWIZeiCaCbNEk84FEy2Mt3prA==", 
-            # "review"=>{
-            #     "content"=>"they are quite fancy and dandy", 
-            #     "product_id"=>"7",
-            #      "user_id"=>"3"},
-
-            #  "commit"=>"Create Review",
-            # "controller"=>"admin/reviews", 
-            # "action"=>"create", 
-            # "product_id"=>"7"}   
-              
-            #       permitted: false>
             @review = Review.create(review_params)
             if @review.save
                 redirect_to @review.product
@@ -42,9 +28,23 @@ class Admin::ReviewsController < ApplicationController
     end
 
     def edit
+        @review = Review.find(params[:id])
+        @product = @review.product
+
     end
 
     def update
+        @review = Review.find(params[:id])
+        @review.update(review_params)
+        if @review.save
+            redirect_to @review.product
+        else
+            @product = Product.find_by(id: params[:review][:product_id])
+            render :edit
+
+        end
+
+
     end
 
     private 

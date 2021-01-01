@@ -1,0 +1,3 @@
+<%= @review.user.name if @review.user.name %>
+<%= @review.content %>
+<%= link_to "Edit Review", edit_product_review_path(@review.product, @review) %>
