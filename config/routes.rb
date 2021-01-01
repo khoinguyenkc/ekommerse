@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post '/checkout/finalize_order' => 'admin/orders#finalize_order', as: "finalize_order"
 
 
+  patch '/admin/cart_items/special_update' => 'admin/cart_items#special_update', as: "cart_item_special_update"
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
 
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
     end
 
     resources :products, only: [:new, :create, :index, :edit, :update, :destroy]
-    resources :cart_items, only: [:create]
+    resources :cart_items, only: [:create, :update, :destroy]
   end
 
 
