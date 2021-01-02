@@ -1,3 +1,9 @@
+<% if notice %>
+<%= notice %>
+<% end %>
+
+
+
 <ul>
 <% @cart.unique_products.each do  | product | %>
    <li> 
@@ -9,6 +15,7 @@
    Quantity: <%= @cart.unique_product_tally(product.id) %>
    Amount:<%= @cart.unique_product_amount(product.id) %>
    
+
 
    <%# editing the cart_item, aka change quantity %>
 
@@ -29,7 +36,7 @@
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="hidden" name="[cart]product_id" value="<%= product %>">
+  <input type="hidden" name="[cart_item]product_id" value="<%= product.id %>">
   <input type="submit" value="Delete">
 
   </form>    
@@ -40,9 +47,6 @@
 
 
 
-<% if notice %>
-<%= notice %>
-<% end %>
 
 
 

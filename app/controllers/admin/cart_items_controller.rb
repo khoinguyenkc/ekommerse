@@ -12,7 +12,7 @@ class Admin::CartItemsController < ApplicationController
         #its OUR job, not user, to ensure this works. 
         @cartitem.compute_amount
         @cartitem.save
-        binding.pry
+        # binding.pry
         # flash.now[:notice] = 'Added to Cart'
         # redirect_to(request.env['HTTP_REFERER']) #this doesn't play well with notice:.... for some reason
         redirect_back fallback_location: product_path(Product.find_by(id: @cartitem.product_id)) , notice: "Added to Cart"
@@ -55,12 +55,16 @@ class Admin::CartItemsController < ApplicationController
     end
 
     def special_destroy
-        raise params.inspect
+        # raise params.inspect
         @cart_items = current_cart.cart_items.where(product_id: params[:cart_item][:product_id])
-        @cart_items.each do |item|
+
+        @cart_items.each do | item |
             item.delete
+            @cart_items.delete(item) #remove asso. otherwise object is gone but its ghost remains... and still display in cart.
+
         end
-        binding.pry
+        redirect_back fallback_location: cart_path , notice: "Item deleted"
+
 
 
     end
