@@ -51,7 +51,20 @@ class Admin::CartItemsController < ApplicationController
 
         # want special check. no changing of price. only quantitty!!!!!
         #we're not dealing with edge cases of product price c hange
+
     end
+
+    def special_destroy
+        raise params.inspect
+        @cart_items = current_cart.cart_items.where(product_id: params[:cart_item][:product_id])
+        @cart_items.each do |item|
+            item.delete
+        end
+        binding.pry
+
+
+    end
+
 
     private
     def cart_item_params

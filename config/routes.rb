@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
 
   patch '/admin/cart_items/special_update' => 'admin/cart_items#special_update', as: "cart_item_special_update"
+  delete 'admin/cart_items/special_destroy' => 'admin/cart_items#special_destroy', as: "cart_item_special_destroy"
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
