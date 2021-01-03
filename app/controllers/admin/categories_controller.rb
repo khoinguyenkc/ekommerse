@@ -11,6 +11,8 @@ class Admin::CategoriesController < ApplicationController
         else
             @categoryproducts = @category.products
         end
+
+        #later implement a check for admin, if admin, pass down a variable admin=true to add a bunch of view functionalities
     end
 
     def index
@@ -35,6 +37,22 @@ class Admin::CategoriesController < ApplicationController
             render :new
         end
     end
+
+    def edit
+        @category = Category.find_by(id: params[:id])
+    end
+
+    def update
+
+        @category = Category.find_by(id: params[:id])
+        if @category.update(category_params) 
+            redirect_to category_path(@category)
+        else
+            render :edit
+        end
+
+    end
+
 
 
 
