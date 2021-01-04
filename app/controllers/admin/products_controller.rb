@@ -1,4 +1,7 @@
 class Admin::ProductsController < ApplicationController
+    before_action :require_admin_logged_in
+    skip_before_action :require_admin_logged_in, only: [:show]
+
     def show
         @product = Product.find(params[:id])
     end

@@ -63,7 +63,6 @@ class Admin::CategoriesController < ApplicationController
         @category.category_products.each do | cp |
             cp.delete #the category_products array still lhas it but the @cat will delete nonetheless
         end
-        binding.pry
         catname = @category.name
         @category.delete
 

@@ -1,0 +1,18 @@
+<h3>ADMIN MENU</h3>
+All Products: <br>
+<%= link_to "Add a new product", new_product_path %> 
+<%= link_to "Product index", products_path %> 
+<br>
+For this product:
+<% if @product && @product.id %>
+This Category: <br>
+
+<%= link_to "Edit this product", edit_product_path(@product.id) %> 
+<br>
+form to delete product
+<% end %>
+<br>
+End of admin menu  
+<br>
+
+
