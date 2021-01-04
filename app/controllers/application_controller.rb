@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :is_logged_in, :current_user, :current_cart, :current_order, :current_email, :current_or_dummy_user, :free_shipping_threshold
+    helper_method :is_logged_in, :current_user, :admin_logged_in, :require_admin_logged_in, :current_cart, :current_order, :current_email, :current_or_dummy_user, :free_shipping_threshold
     #this makes it available to not just contorllers, but views too
 
     def is_logged_in
@@ -11,6 +11,16 @@ class ApplicationController < ActionController::Base
     def current_user
         @user = User.find_by(id: session[:user_id])
     end
+
+    def admin_logged_in
+        current_user && current_user.admin == true ? true : false
+    end
+
+    def require_admin_logged_in
+        return head(:forbidden) unless admin_logged_in == true
+
+    end
+
 
     def current_cart
         if !session[:cart_id] 

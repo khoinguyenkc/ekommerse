@@ -1,4 +1,8 @@
 class Admin::CategoriesController < ApplicationController
+    before_action :require_admin_logged_in
+    skip_before_action :require_admin_logged_in, only: [:show]
+
+
     def show
         @category = Category.find_by(id: params[:id])
         #need protection against invalid category (deleted/doesnt exist, etc)

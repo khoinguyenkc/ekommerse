@@ -1,0 +1,21 @@
+<h3>ADMIN MENU</h3>
+All Categories: <br>
+<%= link_to "Add a new category", new_category_path %> 
+<%= link_to "Categories index", categories_path %> 
+<br>
+
+<% if @category && @category.id %>
+This Category: <br>
+
+<%= link_to "Edit this category", edit_category_path(@category.id) %> 
+<br>
+<%= link_to "Add a new Product in this category", new_category_product_path(@category) %>
+<br>
+<form action="/admin/categories/<%= @category.id %>" method="POST">
+<input type="hidden" name="_method" value="delete">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Delete Category">
+</form>
+<% end %>
+
+
