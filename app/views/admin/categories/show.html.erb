@@ -8,6 +8,14 @@ Sort by:
 
 <h1><%= @category.name %></h1>
 <%= link_to "Add a new Product in this category", new_category_product_path(@category) %>
+
+<form action="/admin/categories/<%= @category.id %>" method="POST">
+<input type="hidden" name="_method" value="delete">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Delete Category">
+</form>    
+
+<form 
 <div>
 <% @categoryproducts.each do | product | %>
 <%= link_to product.name, product_path(product) %>

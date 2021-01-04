@@ -1,6 +1,7 @@
 class Admin::CategoriesController < ApplicationController
     def show
         @category = Category.find_by(id: params[:id])
+        #need protection against invalid category (deleted/doesnt exist, etc)
 
         if params[:sort]
             if params[:sort] == "lowtohigh"
@@ -16,7 +17,7 @@ class Admin::CategoriesController < ApplicationController
     end
 
     def index
-    
+        @categories = Category.all
     end
 
 
@@ -52,6 +53,20 @@ class Admin::CategoriesController < ApplicationController
         end
 
     end
+
+    def destroy
+        @category = Category.find_by(id: params[:id])
+        @category.category_products.each do | cp |
+            cp.delete #the category_products array still lhas it but the @cat will delete nonetheless
+        end
+        binding.pry
+        catname = @category.name
+        @category.delete
+
+        redirect_to categories_path,  notice: "Category #{catname} deleted"
+
+    end
+
 
 
 
