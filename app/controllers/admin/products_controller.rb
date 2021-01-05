@@ -21,7 +21,6 @@ class Admin::ProductsController < ApplicationController
         # raise params.inspect
             
         @product = Product.create(product_params)
-
         if @product.save
             redirect_to @product
         else
@@ -61,9 +60,22 @@ class Admin::ProductsController < ApplicationController
 
     end
 
+    def destroy
+        @product = Product.find(params[:id])
+
+        @product.category_products.each do | cp |
+            cp.delete #the category_products array still lhas it but the @product will delete 
+        end
+        productname = @product.name
+        @product.delete
+
+        redirect_to products_path,  notice: "Category #{productname} deleted"
+    end
+
+
     private
     def product_params
-        params.require(:product).permit(:name, :description, :image, :current_price, :category_ids)
+        params.require(:product).permit(:name, :description, :image, :current_price, category_ids: [])
     end
 
 

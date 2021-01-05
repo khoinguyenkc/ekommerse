@@ -9,7 +9,15 @@ This Category: <br>
 
 <%= link_to "Edit this product", edit_product_path(@product.id) %> 
 <br>
+
 form to delete product
+<form action="/admin/products/<%= @product.id %>" method="POST">
+<input type="hidden" name="_method" value="delete">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Delete Product">
+</form>
+
+ 
 <% end %>
 <br>
 End of admin menu  
