@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_111950) do
+ActiveRecord::Schema.define(version: 2021_01_06_050850) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "recipient_name"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_12_31_111950) do
     t.integer "address_id"
     t.boolean "paid", default: false, null: false
     t.boolean "fulfilled", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
