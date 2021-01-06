@@ -1,5 +1,9 @@
+<ul>
 <% @orders.each do | order | %>
     <% if order.paid %>
-    <%= link_to order.id , order_path(order) %>
+    <li>
+    <%= link_to "Amount: " + order.total_amount.to_s + " - " + order.created_at.strftime("%A, %b %d")  , order_path(order) %>
+    </li>
     <% end %> 
     <% end %> 
+    </ul>

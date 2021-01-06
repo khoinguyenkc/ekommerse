@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/checkout/shipping' => 'admin/orders#choose_shipping', as: "shipping"
   post '/checkout/shipping' => 'admin/orders#update_shipping', as: "update_shipping"
   get '/checkout/payment' => 'admin/orders#payment', as: "payment"
+  get '/checkout/confirm_order' => 'admin/orders#confirm_order', as: "confirm_order"
   post '/checkout/finalize_order' => 'admin/orders#finalize_order', as: "finalize_order"
 
 

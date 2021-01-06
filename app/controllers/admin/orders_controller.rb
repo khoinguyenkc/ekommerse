@@ -25,6 +25,7 @@ class Admin::OrdersController < ApplicationController
         @order = current_order
         @order.update(order_params) #give it the address. 
         @order.address.user_id = current_user.id if current_user
+        session[:current_address_id] = @order.address.id
         #if old address, it will not create new address. because we wrote a custom setter 
 
         session[:current_email] = params[:order][:address_attributes][:email]
@@ -58,12 +59,23 @@ class Admin::OrdersController < ApplicationController
 
     def payment
         #this shows a form. doesn't collect anything since we got no payment system. user just click submit
+            if is_logged_in
+                @nextpath = confirm_order_path
+            else
+                @nextpath = force_log_in_path
+            end
+
+    end
+
+    def confirm_order
 
     end
 
     def finalize_order
         # mark order as paid
         @order = current_order
+        @order.user = current_user
+        current_user.addresses << @order.address #this is needed to prefill form next time
         @order.paid = true
         @order.save
         @cart = @order.cart
@@ -72,18 +84,11 @@ class Admin::OrdersController < ApplicationController
         #D-R-Y
         clear_cart
         clear_order
-
+        clear_email
+        clear_address
         #then
-        if !is_logged_in
-            redirect_to force_log_in_path
-            #warning
-            #gotta somehow make it return here and execute the rest of this method's code
-        else 
-                    #need to associate user to order
-            #i forgot this
-            render "thanks_for_order"
+        render "thanks_for_order"
 
-        end
         
     end
 

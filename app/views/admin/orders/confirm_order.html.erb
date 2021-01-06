@@ -1,0 +1,8 @@
+confirm order VIEW
+
+<form action="<%= finalize_order_path %>" method="POST">
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<input type="submit" value="Confirm Order">
+</form>

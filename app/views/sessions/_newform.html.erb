@@ -3,6 +3,8 @@
     <%=    f.text_field :email %><br>
     Password:
     <%=    f.password_field :password %><br>
+    <input type="hidden" name="source" value="<%= @source %>">
     <%= f.submit "Log in" %>
+
     <% end %>
 

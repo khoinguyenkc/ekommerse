@@ -64,6 +64,10 @@ class ApplicationController < ActionController::Base
             session[:current_email] 
     end
 
+    def current_address
+        Address.find_by(id: session[:current_address_id])
+    end
+
     def current_or_dummy_user
         if is_logged_in
             current_user
@@ -83,6 +87,15 @@ class ApplicationController < ActionController::Base
     def clear_order
         session.delete :order_id if session[:order_id]
     end
+
+    def clear_email
+        session.delete :current_email if session[:current_email] 
+    end
+
+    def clear_address
+        session.delete :current_address_id if session[:current_address_id]
+    end
+
 
     
 

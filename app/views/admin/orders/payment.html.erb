@@ -12,7 +12,11 @@ ALL TRANSACTIONS ARE SECURE AND ENCRYPTED.
 
 
 
-<%= form_tag(finalize_order_path)  do %>
+
+<form action="<%= @nextpath %>" method="GET">
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
 
 <label>Card Number:</label><br>
 <input type="text" ><br>
@@ -22,7 +26,7 @@ ALL TRANSACTIONS ARE SECURE AND ENCRYPTED.
 <input type="text" ><br>
 <label>Security Code:</label><br>
 <input type="text" ><br>
-<%= submit_tag "Pay Now" %>
-<% end %>
+<input type="submit" value="Pay Now">
+</form>
 
 </div>

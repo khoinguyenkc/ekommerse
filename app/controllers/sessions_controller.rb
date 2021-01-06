@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
     def force_log_in
         @user = User.new
+        @source = "force_log_in"
     end
 
 
@@ -13,14 +14,18 @@ class SessionsController < ApplicationController
         #deal with regular login AND OAuth
 
         if params[:user] #regular
-            # raise params.inspect
 
             @user = User.find_by(email: params[:user][:email])
             authenticated = @user.try(:authenticate, params[:user][:password])
 
              if authenticated 
                 session[:user_id] = @user.id
-                redirect_to root_path
+                if params[:source] == "force_log_in"
+                    redirect_to confirm_order_path
+                else #sent from force login
+                    redirect_to root_path
+                end 
+
              else        
                 # redirect_to new_session_path
                 redirect_back fallback_location: new_session_path, notice: "Could not verify login. Please try again"
