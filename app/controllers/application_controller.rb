@@ -34,22 +34,26 @@ class ApplicationController < ActionController::Base
 
     def current_order 
         if !session[:order_id] 
+
             @order = Order.new
 
             if is_logged_in && current_user.addresses.last #the last added address
                 @order.address = current_user.addresses.last #theres some bug. it's grabbing another user's address info ...
                 @order.save
             else
-                @order.address = Address.new
+                @order.address = Address.new 
                 @order.save
             end
+
+            @order.cart = current_cart
+            @order.save
+            session[:order_id] = @order.id
+
 
         else
             @order = Order.find_by(id: session[:order_id])
         end
 
-            @order.cart = current_cart
-            @order.save
             @order #implicit return
 
     end

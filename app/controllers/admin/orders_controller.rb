@@ -65,8 +65,9 @@ class Admin::OrdersController < ApplicationController
         # mark order as paid
         @order = current_order
         @order.paid = true
+        @order.save
         @cart = @order.cart
-
+        @cart.save
         #then remove the session{:order_id], clear cart, etc.... but dont enable them until everything else is workingư
         #D-R-Y
         clear_cart
@@ -78,6 +79,8 @@ class Admin::OrdersController < ApplicationController
             #warning
             #gotta somehow make it return here and execute the rest of this method's code
         else 
+                    #need to associate user to order
+            #i forgot this
             render "thanks_for_order"
 
         end
@@ -87,6 +90,10 @@ class Admin::OrdersController < ApplicationController
     def show 
         @order = Order.find_by(id: params[:id])
         @cart = @order.cart
+    end
+
+    def index
+        @orders = Order.all
     end
 
 
