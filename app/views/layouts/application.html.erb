@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'style' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -13,9 +14,7 @@
 
   <body>
 
-  <%= link_to "Cart", cart_path %>
-
-<% if is_logged_in %>
+  <% if is_logged_in %>
 <a href="/logout"> Log out </a>
 <% else %>
 <a href="/auth/facebook"> Log in thru facebook </a>
@@ -23,11 +22,25 @@
 <a href="<%= new_user_path %>"> Sign up with your store account </a>
 <% end %>
 
-<nav> 
-<% Category.all.each do | category | %>
-  <%= link_to category.name, category_path(category) %>
-  <% end %>
-</nav>
+
+  <div class="head-banner" >
+<h1>E-KOMMERSE</h1>
+<div class="menu button"><a href="#">MENU</a></div>
+<div class="bag button"><%= link_to "MY BAG", cart_path %></div>
+  </div>
+
+  <nav> 
+  <ul>
+  <% Category.all.each do | category | %>
+    <li>
+    <%= link_to category.name, category_path(category) %>
+    </li>
+    <% end %>
+    </ul>
+  </nav>
+  
+
+
 
     <%= yield %>
   </body>

@@ -1,13 +1,14 @@
-admin module - categories - show file
-we want to not have admin in the url for this file
+
+<div class="category-hero-box">
+<h2><%= @category.name %></h2>
+</div>
+
 
 <%= render "admin_menu" %>
 #option to sort by....
 Sort by:
 <%= link_to "Low to High Price", {:controller => "admin/categories", :action => "show", :sort => "lowtohigh" }%>
 <%= link_to "High to Low Price", {:controller => "admin/categories", :action => "show", :sort => "hightolow" }%>
-
-<h1><%= @category.name %></h1>
 
 
 <div>
