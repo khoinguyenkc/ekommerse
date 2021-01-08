@@ -1,12 +1,10 @@
-admin module - products - show file
-we want to not have admin in the url for this file
 
-<%= render "admin_menu" %>
 
-<section class="product-show-panel >
+<section class="product-show-panel" >
 
-    <div class="product-image">
-
+    <div class="product-image"> 
+        <img src="https://www.jlobeauty.com/dw/image/v2/BCFS_PRD/on/demandware.static/-/Sites-JL-master/default/dw48d74ecf/images/pdp/serum/serum_rg_v2.jpg?sw=800&sh=960&sm=fit">
+        
     </div>
 
     <div class="product-info">
@@ -19,30 +17,51 @@ we want to not have admin in the url for this file
     Price: $<%= @product.current_price %>
     </div>
 
-    
+    <div class="add-to-cart">
+        <%= form_for CartItem.new,   :url => url_for(controller: 'admin/cart_items',
+        action: 'create',
+        method: 'post') do | f | %>
+        <%= f.label :quantity  %>
+        <%= f.number_field :quantity, value: 1  %>
+        <%= f.hidden_field :price, value: @product.current_price  %>
+        <%= f.hidden_field :product_id, value: @product.id  %>
+        <%= f.hidden_field :cart_id, value: current_cart.id %>
+        <div>
+        <%= f.submit "Add to Cart", id: "submit", class: "button" %>
+        </div>
+        <% end %>
+        <% if notice %>
+        <%= notice %>
+        <% end %>
+
+    </div>
+
+    <div class="product-description">
+    <h4>Description</h4>
+    <p><%= @product.description %></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ante turpis, feugiat a sem eget, aliquet interdum orci. Integer ac aliquet augue. Vivamus lorem erat, sagittis eu tincidunt id, tempus at quam. Aliquam in ipsum condimentum, auctor mi id, pharetra justo. </p>
+            <br>
+    <p>Proin blandit, leo vitae accumsan vulputate, elit enim blandit tellus, quis finibus nulla nunc et purus. Sed vel felis fermentum, egestas justo ut, blandit nulla. Aenean iaculis vitae magna ut viverra. Aenean blandit, justo laoreet pharetra consectetur, lacus odio convallis tortor, eget facilisis est urna vel quam.</p>
+    <br>
+
+<p>Etiam congue leo eu lorem condimentum, non pulvinar neque elementum. Suspendisse semper aliquet luctus. Nullam et enim ac sem hendrerit tristique. In luctus, sapien consequat consectetur vehicula, diam ipsum tincidunt quam, at placerat nunc leo eu mauris.</p>
+
+
+    </div>
+
+
     </div>
 
 
 
-<%= form_for CartItem.new,   :url => url_for(controller: 'admin/cart_items',
-    action: 'create',
-    method: 'post') do | f | %>
-<%= f.label :quantity  %>
-<%= f.number_field :quantity, value: 1  %>
-<%= f.hidden_field :price, value: @product.current_price  %>
-<%= f.hidden_field :product_id, value: @product.id  %>
-<%= f.hidden_field :cart_id, value: current_cart.id %>
-<%= f.submit "Add to Cart" %>
-<% end %>
-<% if notice %>
-<%= notice %>
-<% end %>
+
 
 
 </section>
 
 
 
+<%= render "admin_menu" %>
 
 
 <%= link_to "Write a Review", new_product_review_path(@product) %>
