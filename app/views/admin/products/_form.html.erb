@@ -9,7 +9,8 @@
     Current Price: <%= f.text_field :current_price %>
     
     <% if @category_id %>
-     <%= f.hidden_field :category_ids, value: @category_id %> 
+     <input value="<%=  @category_id  %>" type="hidden" name="product[category_ids][]" id="product_category_ids" /> 
+
     <% else %>
     Category IDs: <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, prompt: true) %>
     <% end %>

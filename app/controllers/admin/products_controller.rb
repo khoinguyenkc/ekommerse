@@ -18,9 +18,9 @@ class Admin::ProductsController < ApplicationController
     end
 
     def create
-        # raise params.inspect
-            
+        #  raise params.inspect
         @product = Product.create(product_params)
+
         if @product.save
             redirect_to @product
         else

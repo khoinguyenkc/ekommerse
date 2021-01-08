@@ -3,12 +3,27 @@ we want to not have admin in the url for this file
 
 <%= render "admin_menu" %>
 
+<section class="product-show-panel >
 
-<div>
-<h2><%= @product.name %></h2>
-Price: $<%= @product.current_price %>
+    <div class="product-image">
 
-</div>
+    </div>
+
+    <div class="product-info">
+
+    <div class="product-name">
+        <h2><%= @product.name %></h2>
+    </div>
+
+    <div class="product-price"
+    Price: $<%= @product.current_price %>
+    </div>
+
+    
+    </div>
+
+
+
 <%= form_for CartItem.new,   :url => url_for(controller: 'admin/cart_items',
     action: 'create',
     method: 'post') do | f | %>
@@ -22,6 +37,13 @@ Price: $<%= @product.current_price %>
 <% if notice %>
 <%= notice %>
 <% end %>
+
+
+</section>
+
+
+
+
 
 <%= link_to "Write a Review", new_product_review_path(@product) %>
 Reviews:
