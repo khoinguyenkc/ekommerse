@@ -171,7 +171,7 @@ nav li a:hover {
 }
 .product-show-panel .product-image {
     min-width: 400px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: inline-block;
     /* width: 59%; */
     flex-basis: 59%;
@@ -182,17 +182,17 @@ nav li a:hover {
 .product-show-panel .product-image img {
     padding-left: 8%;
     padding-right: 0%;
-
+    padding-top: 50px;
     width: 100%;
 }
 .product-show-panel .product-info {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     display: inline-block;
     /* width: 40%; */
     flex-basis: 40%;
     flex-grow: 1;
     min-width: 300px;
-    padding: 150px 8% 0;
+    padding: 150px 8% 200px;
 
 }
 
@@ -220,6 +220,29 @@ nav li a:hover {
 .product-show-panel .product-info .product-description {
     line-height: 1.4;
     font-size: 16px;
+}
+
+.product-show-panel .product-info  .quantity-selector {
+    /* border: 1px solid red; */
+    width: 60px;
+    height: 30px;
+}
+
+.product-show-panel .product-info  .quantity-container {
+    margin-top: 20px;
+    /* border: 1px solid orange; */
+    height: 40px;
+}
+
+
+.product-show-panel .product-info .quantity-container .label {
+    float: left;
+    text-transform: uppercase;
+    padding-top: 5px;
+}
+
+.product-show-panel .product-info .quantity-container .selector {
+    float: right;
 }
 
 
