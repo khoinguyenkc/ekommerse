@@ -1,32 +1,65 @@
 
-<h3>THIRD STEP OF CHECKOUT: payment </h3>
-
-<%= render "bill_subtotal" %>
-<%= render "bill_taxes" %>
-<%= render "bill_shipping" %>
-<%= render "bill_total" %>
-
-<div>
-<h1>PAYMENT</h1>
-ALL TRANSACTIONS ARE SECURE AND ENCRYPTED.
+<div class="center-wrapper">
 
 
 
+<div class="checkout-form payment-form">
+
+<h2>PAYMENT</h2>
 
 <form action="<%= @nextpath %>" method="GET">
 
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-
+<div class="box">
 <label>Card Number:</label><br>
-<input type="text" ><br>
+<input type="text" >
+</div>
+<div class="box">
+
 <label>Name on Card:</label><br>
-<input type="text" ><br>
+<input type="text" >
+</div>
+
+<div class="box">
+
+<div class="box">
 <label>Expiration Date (MMYY):</label><br>
-<input type="text" ><br>
+<input type="text" >
+</div>
+
+
+
+<div class="box">
+
 <label>Security Code:</label><br>
-<input type="text" ><br>
-<input type="submit" value="Pay Now">
+<input type="text" >
+</div>
+
+
+<input type="submit" value="Pay Now", class="big-brown-button" >
 </form>
+
+</div>
+
+
+
+<div class="checkout-bill">
+<div class="line">
+<%= render "bill_subtotal" %>
+</div>
+<div class="line">
+<%= render "bill_taxes" %>
+</div>
+<div class="line">
+<%= render "bill_shipping" %>
+</div>
+<div class="line">
+<%= render "bill_total" %>
+</div>
+</div>
+
+
+
 
 </div>
