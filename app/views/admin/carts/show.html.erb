@@ -1,16 +1,42 @@
 
-<h1> Cart </h1>
-<div>
-We havent figured out the quantity stuff and then the price stuff. Need to handle edge case if the user go back to product page and buy again, which create another cart item
-PRobably need a method in the Cart model.
+<div class="center-wrapper">
+
+<section class="cart-items-section">
+
+<div class="cart-title">
+<h2> YOUR BAG </h2>
+</div>
+
+
 
     <%= render "cart_details" %>
 
+</section>
     <br>
-
-    
-    Subtotal: <%= @cart.compute_current_subtotal %>
-
-
-    <a href="<%= collect_address_path %>">Go to Checkout</a>
     <div>
+
+    <section class="cart checkout-section">
+        <div class="subtotal-label">
+        <div class="left">
+        Subtotal
+        </div>
+        <div class="right">
+        $<%= @cart.compute_current_subtotal %>
+        </div>
+        </div>
+            <a class="button" href="<%= collect_address_path %>">Go to Checkout</a>
+        
+
+    </section>
+    <div>
+
+
+
+
+
+
+
+
+
+
+    </div>

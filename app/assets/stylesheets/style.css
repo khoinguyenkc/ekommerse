@@ -247,19 +247,203 @@ nav li a:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*end of PRODUCT SHOW STUFF */
+
+
+
+/*-----------------------------------*/
+/*CART SHOW STUFF */
+/*-----------------------------------*/
+
+
+.cart.checkout-section {
+    background-color: hsla(18,34%,64%,.2);
+}
+
+.center-wrapper {
+    margin: 0 auto;
+    padding-top: 50px;
+    border: 1px solid black;
+    width: 50%;
+    min-width: 400px;
+}
+
+.cart-items-section {
+}
+.cart-title {
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+.cart-items-section  ul {
+    list-style-type: none;
+}
+
+.cart-item {
+    /* border: 1px solid blue; */
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #F5F5F5;
+    display: flex; 
+    align-items: flex-start; 
+     flex-wrap: wrap;
+
+}
+
+.cart-items-section .cart-item .image {
+    /* border: 1px solid orange; */
+    /* display: inline-block; */
+    width: 120px;
+    /* width: 20%; */
+    height: 120px;
+}
+
+.cart-items-section .cart-item  .image img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.cart-items-section .cart-item .middle-pane {
+    /* border:1px solid red; */
+    /* display: inline-block; */
+    text-transform: uppercase;
+    font-size: 12px;
+    /* width: auto; */
+    /* flex-basis: 50%; */
+    flex-grow: 1;
+    height: 120px;
+    padding-left: 15px;
+
+    /*as a container: */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+}
+
+.cart-items-section .cart-item .middle-pane .title {
+    font-weight: bold;
+    letter-spacing: .2px;
+    margin-bottom: 5px;
+}
+
+.cart-items-section .cart-item .middle-pane .prices {
+    font-size: 12px;
+    color: grey;
+}
+.cart-items-section .cart-item .right-pane {
+    /* float: right; */
+
+    width: 80px;
+    height: 120px;
+    /* border:1px solid green; */
+    /* display: inline-block; */
+    text-transform: uppercase;
+    font-size: 10px;
+    /* flex-basis: 20%; */
+    /* flex-shrink: 1; */
+
+        /*as a container: */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+        text-align: right;
+
+}
+
+.cart-items-section .cart-item .right-pane .quantity-selector {
+    width: 40px;
+    height: 30px;
+    background-color: #F5F5F5;
+    border: 1px solid grey;
+    border-radius: 2px;
+    text-align: center;
+
+}
+
+.cart-items-section .cart-item .right-pane .submit {
+    border: none;
+    text-transform: uppercase;
+    font-size: 10px;
+
+
+}
+
+.cart-items-section .cart-item .right-pane .quantity {
+}
+
+
+.cart-items-section .cart-item .right-pane .remove-button  #cart-item-delete-button{
+    color: grey;
+    font-size: 10px;
+
+}
+
+
+.parent {
+    border: 1px solid black;
+    display: flex;
+    align-items: flex-start;
+}
+
+.child-a {
+    border: 1px solid red;
+
+    width: 19%;
+    height: 100px;
+}
+
+.child-a img {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.child-b {
+    border: 1px solid green;
+
+    width: 39%;
+    height: 200px;
+}
+
+.child-b .middle-pane {
+    width: 100%;
+}
+.child-c {
+    border: 1px solid blue;
+
+    width: 19%;
+    height: 100px;
+}
+
+
+.cart.checkout-section {
+    background-color: #F5F5F5;
+    padding: 30px 30px 50px;
+
+}
+
+.cart.checkout-section .button {
+    display: block; /*important. makes the link element block. if you use a wrapping div the div wont be clickable */
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    background-color: #c39885;
+    padding: 20px 0 20px 20px; 
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.cart.checkout-section .subtotal-label {
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}

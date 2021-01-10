@@ -4,17 +4,39 @@
 
 
 
-<ul>
+
 <% @cart.unique_products.each do  | product | %>
-   <li> 
+
+    <div class="cart-item">
+
 
    <%# display the unique products, quantity, price, amount %>
 
-   <%= link_to product.name, product_path(product) %>
-   Price: <%= @cart.price_when_bought(product) %>
-   Quantity: <%= @cart.unique_product_tally(product.id) %>
-   Amount:<%= @cart.unique_product_amount(product.id) %>
-   
+   <div class= "image">
+    <a href="<%= product_path(product) %>">
+        <img src="https://cdn.shopify.com/s/files/1/2037/5105/products/KKW-Body-Shimmer-Travel-Bottle-1500_600x.jpg?v=1596404762">
+    </a>
+    </div>
+
+
+    <div class="middle-pane">
+    <div class="title">
+   <span  ><%= link_to product.name, product_path(product) %></span>
+    </div>
+
+    <div class="prices">
+   <span>Price: <%= @cart.price_when_bought(product) %></span>
+   <br>
+   <span>Amount:<%= @cart.unique_product_amount(product.id) %></span>
+   </div>
+
+   </div>
+
+
+
+
+   <div class="right-pane">
+
 
 
    <%# editing the cart_item, aka change quantity %>
@@ -22,14 +44,23 @@
    <%= form_for @cart.cart_items.find{ |item| item.product_id == product.id } ,   :url => url_for(controller: 'admin/cart_items',
     action: 'special_update',
     method: 'patch') do | f | %>
+        <div class="quantity">
 <%= f.label :quantity  %>
-<%= f.number_field :quantity, value: @cart.unique_product_tally(product.id)   %>
+<br>
+
+<%= f.number_field :quantity, value: @cart.unique_product_tally(product.id), class: "quantity-selector"  %>
+<br>
 <%# we prevent sneaky changing price %>
 <%= f.hidden_field :product_id, value: product.id  %>
 <%= f.hidden_field :cart_id, value: session[:cart_id] %>
-<%= f.submit "Update" %>
+<%= f.submit "Update", class: "submit" %>
 <% end %>
 
+</div>
+
+
+
+<div class="remove-button">
 
       <%# delete cart item %>
   <form action="<%= cart_item_special_destroy_path %>" method="POST">
@@ -37,9 +68,15 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="hidden" name="[cart_item]product_id" value="<%= product.id %>">
-  <input type="submit" value="Delete">
+  <input type="submit" value="Remove", class="submit", id="cart-item-delete-button">
 
   </form>    
+
+  </div>
+
+  </div>
+
+
 
   
 
@@ -54,7 +91,8 @@
 
 
    <%= %>
-   </li>
+
+   </div> <%# end of class cart-item div %>
     <% end %>
-    </ul>
+    
 
