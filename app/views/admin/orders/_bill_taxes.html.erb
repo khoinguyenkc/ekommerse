@@ -1,5 +1,9 @@
 
 
-Taxes:  
-<%= current_cart.compute_taxes(current_order.address.zipcode, current_cart.compute_current_subtotal) %>
 
+<div class="number-label">
+Taxes
+</div>
+<div class="dollar-amount">
+<%= current_cart.compute_taxes(current_order.address.zipcode, current_cart.compute_current_subtotal) %>
+</div>

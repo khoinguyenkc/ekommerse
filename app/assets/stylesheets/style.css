@@ -24,6 +24,46 @@ body {
 }
 
 /*-----------------------------------*/
+/*REUSABLE STUFF */
+/*-----------------------------------*/
+
+/*used in checkout flow cart to end */
+.center-wrapper {
+    margin: 0 auto;
+    padding-top: 50px;
+    border: 1px solid black;
+    width: 50%;
+    min-width: 400px;
+}
+
+.checkout-bill .line {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:15px;
+}
+.checkout-bill .number-label {
+    color: darkgray;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.checkout-bill .number-label.special {
+    font-size: 24px;
+    color: black;
+
+}
+
+.checkout-bill .dollar-amount {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.checkout-bill .dollar-amount.special {
+    font-weight: normal;
+    font-size: 24px;
+}
+/*-----------------------------------*/
 /*HEADER STUFF */
 /*-----------------------------------*/
 
@@ -260,13 +300,6 @@ nav li a:hover {
     background-color: hsla(18,34%,64%,.2);
 }
 
-.center-wrapper {
-    margin: 0 auto;
-    padding-top: 50px;
-    border: 1px solid black;
-    width: 50%;
-    min-width: 400px;
-}
 
 .cart-items-section {
 }
@@ -447,3 +480,56 @@ nav li a:hover {
     display: flex;
     justify-content: space-between;
 }
+
+/* end of CART SHOW stuff */
+
+/*-----------------------------------*/
+/*CHECKOUT - Collect Address STUFF */
+/*-----------------------------------*/
+
+.address-form h2 {
+    margin-bottom: 15px;
+}
+.address-form label{
+    display: inline-block;
+    width: 100%;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.address-form .small {
+    min-width: 150px;
+    width: 30%;
+}
+
+.address-form .small input {
+    width: 100%;
+    display: inline;
+}
+
+.address-form input {
+    padding-left: 10px;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 30px;
+}
+
+.address-form #trio-address-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.address-form input.button {
+    display: block; /*important. makes the link element block. if you use a wrapping div the div wont be clickable */
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    border: none;
+    background-color: #c39885;
+    padding: 20px 0 20px 20px; 
+    font-weight: bold;
+    font-size: 14px;
+

@@ -2,26 +2,32 @@
 <h3>FIRST STEP OF CHECKOUT: collect email and address </h3>
 
 
-<%= render "bill_subtotal" %>
-<%= render "bill_total" %>
 
 <% if !is_logged_in %>
 Returning customer?   <a href="">Sign in </a>for faster checkout.
 <% end %>
 
 this used to use @order but now it uses the current_order helper
+
+
+<div class="center-wrapper">
+
+<div class="address-form">
 <%= form_for current_order, :url => url_for(path: update_address_path, method: :post)   do |f| %>
 
 
 
 
 
-    <h2> Shipping Address </h2>
 <%= f.fields_for :address,  @address do | addr | %>
+
+    <h2> Contact Information </h2>
 
     <%= addr.label :email %>
     <%= addr.text_field :email, value: current_email  %><br>
     <!-- were just using this to get the email. wont actually save the email to the address -->
+
+    <h2> Shipping Address </h2>
 
     <%= addr.label :recipient_name %>
     <%= addr.text_field :recipient_name  %><br>
@@ -32,17 +38,40 @@ this used to use @order but now it uses the current_order helper
     <%= addr.label :city %>
     <%= addr.text_field :city %><br>
  
+    <div id="trio-address-line">
+    <div class="small">
     <%= addr.label :state %>
     <%= addr.text_field :state %><br>
+    </div>
+
+    <div class="small">
 
     <%= addr.label :country %>
     <%= addr.text_field :country %><br>
+    </div>
+
+    <div class="small">
 
     <%= addr.label :zipcode %>
     <%= addr.text_field :zipcode %><br>
- 
+    </div>
+    
+    </div>
+
 
 <% end %>
-<%= f.submit "Continue to Shipping" %>
+<%= f.submit "Continue to Shipping", class: "button" %>
 
 <% end %>
+
+<div class="checkout-bill">
+<div class="line">
+<%= render "bill_subtotal" %>
+</div>
+<div class="line">
+<%= render "bill_total" %>
+</div>
+</div>
+
+</div> 
+</div>
