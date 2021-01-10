@@ -1,32 +1,59 @@
-Shipping 
 
-<h3>SECOND STEP OF CHECKOUT: choose shipping </h3>
 
-<%= render "bill_subtotal" %>
-<%= render "bill_taxes" %>
-<%= render "bill_total" %>
 
-<br>
-I need to turn this into a form to submit. it will edit the cart ....
-<div>
-Shipping Options:
+
+
+
+
+
+<div class="center-wrapper">
+
+<div class="shipping-panel">
+
+<div class="options-menu">
+
+<h2>Shipping Method</h2>
+
 <%= form_tag update_shipping_path do %>
 <% if current_cart.subtotal > free_shipping_threshold %>
+<div class="box">
 <input type="radio" id="free" name="order[shippingoption]" value="free" required>
 <label for="standard">Free Shipping</label><br>
+</div>
 <% else  %>
+<div class="box">
+
 <label>
 <input type="radio" id="standard" name="order[shippingoption]" value="slow">
-<label for="standard">Standard Shipping <%= current_cart.compute_shipping_options[:slow] %></label><br>
+<label for="standard">Standard Shipping <%= current_cart.compute_shipping_options[:slow] %></label>
+</div>
+
 <% end  %>
+<div class="box">
+
 <input type="radio" id="express" name="order[shippingoption]" value="fast">
 <label for="express">Express Shipping <%= current_cart.compute_shipping_options[:fast] %></label><br>
-
-<%= submit_tag "Next step" %>
+</div>
+<%= submit_tag "Next step", class: "big-brown-button" %>
 <% end %>
 
 </div>
 
 
 
+<div class="checkout-bill">
+<div class="line">
+<%= render "bill_subtotal" %>
+</div>
+<div class="line">
+<%= render "bill_taxes" %>
+</div>
+<div class="line">
+<%= render "bill_total" %>
+</div>
+</div>
+
+
+</div>
+</div>
 
