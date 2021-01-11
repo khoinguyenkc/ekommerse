@@ -122,6 +122,7 @@ class Admin::OrdersController < ApplicationController
     def order_params
         params.require(:order).permit(
             address_attributes: [
+                :recipient_name,
                 :street,
                 :city,
                 :state,

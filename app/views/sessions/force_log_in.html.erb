@@ -4,20 +4,7 @@ it just has extra lines like
 
 
 
-<% if !is_logged_in %>
-<a href="/auth/facebook"> Log in thru facebook </a><br>
-
-<% if notice %>
-<%= notice %>
-<% end %>
-
-Form to log in:
-<%= render 'newform' %>
-Form to sign up:
-<%= render 'users/newform' %>
-
-
-<% end %>
 
 
 
+<%= render "login_options" %>

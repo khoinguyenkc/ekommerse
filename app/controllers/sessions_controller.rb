@@ -58,6 +58,7 @@ class SessionsController < ApplicationController
 
         clear_cart
         clear_order
+        clear_email
 
         redirect_to root_path
     end

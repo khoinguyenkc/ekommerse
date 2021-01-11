@@ -67,7 +67,8 @@ body {
 .address-form input.big-brown-button, 
 .shipping-panel input.big-brown-button, 
 .payment-form input.big-brown-button, 
-.confirm-order-form input.big-brown-button {
+.confirm-order-form input.big-brown-button, 
+.login-page input.big-brown-button {
     display: block; /*important. makes the link element block. if you use a wrapping div the div wont be clickable */
     margin-top: 10px;
     width: 100%;
@@ -597,7 +598,63 @@ nav li a:hover {
 
 /* end of CHECKOUT - Payment stuff */
 
+/*-----------------------------------*/
+/*CHECKOUT - Confirm Order STUFF */
+/*-----------------------------------*/
+
 
 .confirm-order-form input.big-brown-button {
     margin-bottom: 40px;
 }
+
+/* end of CHECKOUT - Confirm Order stuff */
+
+
+/*-----------------------------------*/
+/* LOGIN PAGE STUFF */
+/*-----------------------------------*/
+
+.login-page .center {
+    margin: 0 auto;
+    padding: 50px 20px 100px;
+    border: 1px solid black;
+    width: 60%;
+}
+
+.login-page .double-panel-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login-page .double-panel-container .log-in-side, .login-page .double-panel-container .sign-in-side {
+    border: 1px solid green;
+    min-width: 300px;
+    margin: 0 20px 30px;
+}
+
+
+.login-page .double-panel-container input {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+}
+
+.login-page .double-panel-container label {
+    display: inline-block;
+    width: 100%;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+ #log-in-button, #sign-up-button {
+    height: auto;
+    /* somehow the big-brown-button was not able to override THIS particular form */
+}
+
+
+/* end of LOGIN PAGE stuff */
