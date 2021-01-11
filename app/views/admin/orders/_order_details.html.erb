@@ -1,4 +1,63 @@
-Subtotal: <%= @cart.subtotal %>
-Taxes: <%= @cart.taxes %>
-Shipping: <%= @cart.shipping %>
-Total: <%= @order.total_amount %>
+
+
+
+<div class="center-wrapper">
+
+
+
+<div class="checkout-bill">
+
+<div class="line">
+<div class="number-label">
+Subtotal
+</div>
+<div class="dollar-amount">
+ <%= @cart.subtotal %>
+</div>
+</div>
+
+
+<div class="line">
+
+<div class="number-label">
+Taxes
+</div>
+<div class="dollar-amount">
+<%=  @cart.taxes %>
+</div>
+</div>
+
+
+
+<div class="line">
+<div class="number-label">
+Shipping
+</div>
+<div class="dollar-amount">
+<%= @cart.shipping %>
+</div>
+</div>
+
+
+
+<div class="line">
+<div class="number-label special">
+Total
+</div>
+<div class="dollar-amount special">
+<%= @order.total_amount %>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+<%= render  "admin/carts/cart_details" %>
+
+
+</div>

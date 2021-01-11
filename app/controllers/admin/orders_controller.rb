@@ -37,6 +37,8 @@ class Admin::OrdersController < ApplicationController
         #this better work. user will not fix anything. 
         #unusual: no redirect. we go to next step: shipping options
         session[:order_id] = @order.id
+
+        binding.pry 
         redirect_to shipping_path
 
     end
@@ -51,6 +53,7 @@ class Admin::OrdersController < ApplicationController
         @cart.shipping = @cart.compute_shipping_options[params[:order][:shippingoption].to_sym]
         @cart.save
         #raise @cart.shipping.inspect
+        binding.pry
 
         redirect_to payment_path #in orders controller
     end
@@ -68,12 +71,16 @@ class Admin::OrdersController < ApplicationController
     end
 
     def confirm_order
-
+        @cart = current_cart
+        binding.pry
     end
 
     def finalize_order
         # mark order as paid
         @order = current_order
+
+        binding.pry 
+
         @order.user = current_user
         current_user.addresses << @order.address #this is needed to prefill form next time
         @order.paid = true
@@ -86,7 +93,11 @@ class Admin::OrdersController < ApplicationController
         clear_order
         clear_email
         clear_address
+        #do these affect the @order and @cart variables above?????
         #then
+
+        binding.pry 
+
         render "thanks_for_order"
 
         
@@ -95,6 +106,7 @@ class Admin::OrdersController < ApplicationController
     def show 
         @order = Order.find_by(id: params[:id])
         @cart = @order.cart
+        binding.pry
     end
 
     def index

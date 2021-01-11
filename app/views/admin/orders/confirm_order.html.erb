@@ -1,8 +1,34 @@
 confirm order VIEW
 
+
+<div class="center-wrapper">
+
+
+<div class="checkout-bill">
+<div class="line">
+<%= render "bill_subtotal" %>
+</div>
+<div class="line">
+<%= render "bill_taxes" %>
+</div>
+<div class="line">
+<%= render "bill_total" %>
+</div>
+</div>
+
+
+
+<div class="confirm-order-form">
 <form action="<%= finalize_order_path %>" method="POST">
 
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-<input type="submit" value="Confirm Order">
+<input type="submit" value="Confirm Order" class="big-brown-button">
 </form>
+</div>
+
+
+<%= render  "admin/carts/cart_details" %>
+
+
+</div>
