@@ -3,19 +3,30 @@
 <div class="center">
 
 <% if !is_logged_in %>
-<a href="/auth/facebook"> Log in thru facebook </a><br>
 
+<a class="facebook-login-button" href="/auth/facebook">
+    <div class="fb-icon">
+    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png">
+    </div>
+
+    <div class="text">
+    Log in Through facebook 
+    </div>
+ </a>
+
+
+<div id="or-text">OR</div>
 <% if notice %>
 <%= notice %>
 <% end %>
 
 <div class="double-panel-container">
 <div class="log-in-side">
-Log In
+<h2>Log In</h2>
 <%= render 'newform' %>
 </div>
 <div class="sign-in-side">
-Sign Up
+<h2>Sign Up</h2>
 <%= render 'users/newform' %>
 </div>
 
