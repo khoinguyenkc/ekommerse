@@ -1,4 +1,7 @@
 SHOW Page for the order
 
-
+<% if @user_permitted %>
 <%= render "order_details" %>
+<% else %>
+Sorry. You are not permitted to view this order 
+<% end %>

@@ -93,6 +93,7 @@ class Admin::OrdersController < ApplicationController
         clear_order
         clear_email
         clear_address
+        #note i'm not logging out!!!!!
         #do these affect the @order and @cart variables above?????
         #then
 
@@ -105,11 +106,25 @@ class Admin::OrdersController < ApplicationController
 
     def show 
         @order = Order.find_by(id: params[:id])
-        @cart = @order.cart
-        binding.pry
+        if !@order
+            render 'welcome/generic_404' 
+            #it must be last line like this to work...
+        else
+
+            @cart = @order.cart
+            #i want to check if the user that's logged in is the order's user#
+            if  (is_logged_in && @order.user_id == current_user.id) || admin_logged_in
+                @user_permitted = true
+            else
+                @user_permitted = false
+            end
+
+        end
+
     end
 
     def index
+        require_admin_logged_in
         @orders = Order.all
     end
 

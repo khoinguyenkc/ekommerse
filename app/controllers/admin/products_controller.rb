@@ -3,7 +3,13 @@ class Admin::ProductsController < ApplicationController
     skip_before_action :require_admin_logged_in, only: [:show]
 
     def show
-        @product = Product.find(params[:id])
+        @product = Product.find_by(id: params[:id])
+        #warning: using find, not find_by, won't work
+        if !@product
+            render 'welcome/generic_404' 
+            #it must be last line like this to work...
+        end
+
     end
 
     def new

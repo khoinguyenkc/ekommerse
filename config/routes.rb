@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root "welcome#home"
+  get '/generic_404' => 'welcome#generic_404', as: "generic_404"
   get '/auth/facebook/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/pleaselogin' => 'sessions#force_log_in', as: "force_log_in"

@@ -11,6 +11,7 @@ class Admin::CartsController < ApplicationController
     # end
 
     def edit
+        #defunct. not in use
     end
 
     #MOVED TO ORDERS CONTROLLER

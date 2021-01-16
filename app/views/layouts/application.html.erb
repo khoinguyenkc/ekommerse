@@ -17,16 +17,21 @@
   <body>
 
   <% if is_logged_in %>
+  <div class="top-ribbon-menu">
+
 <a href="/logout"> Log out </a>
+</div>
+
 <% else %>
-<a href="/auth/facebook"> Log in thru facebook </a>
-<a href="<%= new_session_path %>"> Log in with your store account </a>
-<a href="<%= new_user_path %>"> Sign up with your store account </a>
+<div class="top-ribbon-menu">
+<a href="<%= new_session_path %>"> Log in / Sign up </a>
+</div>
+
 <% end %>
 
 
   <div class="head-banner" >
-<h1>E-KOMMERSE</h1>
+  <a href="<%= root_path %>"><h1>E-KOMMERSE</h1></a>
 <div class="menu button"><a href="#">MENU</a></div>
 <div class="bag button"><%= link_to "MY BAG", cart_path %></div>
   </div>
