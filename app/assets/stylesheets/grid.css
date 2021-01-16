@@ -52,7 +52,9 @@
 }
 
 .span-1-of-2 {
-	width: 49.2%;
+	/* width: 49.2%; */
+	width: 45%;
+	/*theres some padding, if u dont adjust this they wont stay on teh same line */
 }
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */

@@ -701,3 +701,170 @@ nav li a:hover {
 
 
 /* end of LOGIN PAGE stuff */
+
+
+/*-----------------------------------*/
+/* HOME PAGE STUFF */
+/*-----------------------------------*/
+
+.homepage .hero-box {
+    background-size: 100% auto;
+    border: 1px solid red;
+    height: 600px;
+    position: relative;
+}
+
+
+.homepage .hero-box .text {
+    position: absolute;
+    border: 1px solid blue;
+}
+
+.homepage .hero-box .text a.title {
+    display: inline-block;
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+    
+}
+
+.homepage .hero-box .text p {
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.homepage #kimk {
+    background-image: url(<%= asset_path 'whatev/kim2.jpg' %>);
+
+}
+
+.homepage #kimk .text {
+    right: 70px;
+    top: 250px;
+    color: white;
+    width: 250px;
+    text-align: right;
+}
+
+.homepage #kimk .text a.title {
+    color: white;
+}
+
+.homepage #kimk p {
+    text-align: right;
+    width: 100%;
+    border: 1px solid red;
+}
+
+ .homepage #chanel-face {
+    background-image: url(<%= asset_path 'home/chanelface.jpg' %>);
+    background-size: auto 600px;
+    #this background size thing is needed for it to work here*/
+}
+
+
+.homepage #chanel-face .text {
+    right: 70px;
+    top: 250px;
+    color: white;
+    width: 250px;
+    text-align: right;
+}
+
+.homepage #chanel-face .text a.title {
+    color: white;
+}
+
+
+
+.homepage #farenheit {
+    background-image: url(<%= asset_path 'home/farenheit.webp' %>);
+
+}
+
+
+.homepage #farenheit .text {
+    left: 170px;
+    top: 340px;
+    color: white;
+    width: 360px;
+    text-align: left;
+}
+
+.homepage #farenheit .text a.title {
+    color: white;
+}
+
+
+.homepage #jadore {
+    background-image: url(<%= asset_path 'home/jadore.webp' %>);
+
+}
+
+.homepage #jadore .text {
+    left: 80px;
+    top: 370px;
+    color: white;
+    width: 350px;
+    text-align: left;
+}
+
+
+.homepage #jadore .text a.title {
+    color: white;
+}
+
+
+.homepage #sauvage {
+    background-image: url(<%= asset_path 'home/sauvage_bottles.webp' %>);
+    text-align: center;
+}
+
+.homepage #sauvage .text {
+    /* left: 170px;*/
+    top: 100px;
+    color: white;
+    width: 360px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+
+.homepage #sauvage .text a.title {
+    color: white;
+}
+
+
+/*-----------------------------------*/
+/* FOOTER STUFF */
+/*-----------------------------------*/
+footer {
+    # border: 1px solid black;
+    padding: 50px 0 50px;
+    background-color: #fafafa;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+footer .row {
+
+    # border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .row .col {
+    # border: 1px solid blue;
+}
+
+footer .row .col.span-1-of-2:nth-child(2) {
+    text-align: right;
+}
+
+footer ul {
+    list-style-type:none;
+}
